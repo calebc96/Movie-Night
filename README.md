@@ -11,11 +11,8 @@ SO THAT I can decide what movie to watch
 * WHEN I view the current movie search
 * THEN I am presented with the movie title, plot, the date released, and trailer
 
-## Test
-test
 
-test again
-=======
+
 ## Mock-up
 
 
