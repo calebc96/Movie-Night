@@ -12,6 +12,6 @@ SO THAT I can decide what movie to watch
 * THEN I am presented with the movie title, plot, the date released, and trailer
 
 ## Mock-up
-
+test commit
 
 ## Live Application URL
