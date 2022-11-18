@@ -10,6 +10,12 @@ const movieGrid = document.getElementById('result-movie');
 // Search box variable grabs input field from html with id of search-box
 const searchBox = document.getElementById('search-box')
 
+var button = document.getElementById('button')
+
+button.addEventListener("click", function(event) {
+  event.preventDefault();
+  searchMovies();
+});
 // Seach movie results from the APi
 async function searchMovies() {
     const movie = searchBox.value;
