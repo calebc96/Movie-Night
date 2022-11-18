@@ -50,11 +50,26 @@ async function searchMovies() {
 
 }
 //kais youtube section
+//youtubesearch = "https://www.youtube.com/results?search_query="+userinput+"+trailer"
+let key = "AIzaSyCY_952gGjBqylPvw16_rgi2pB2NI6aoPk";
+let youtubeURL = "https://www.googleapis.com/youtube/v3/videos?id=o9Ua9SwtZjg&key="+key+"&part=snippet,contentDetails,statistics,status";
+fetch(youtubeURL)
 
- // 2. This code loads the IFrame Player API code asynchronously.
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log("youtube",data);
+    
+    });
+
+
+
+// 2. This code loads the IFrame Player API code asynchronously.
  var tag = document.createElement('script');
  tag.src = "https://www.youtube.com/iframe_api";
  console.log(tag.src);
+ 
  var firstScriptTag = document.getElementsByTagName('script')[0];
  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
  // 3. This function creates an <iframe> (and YouTube player)
@@ -90,4 +105,4 @@ async function searchMovies() {
    }
  }
  
-
+    
