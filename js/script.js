@@ -61,11 +61,11 @@ async function searchMovies() {
  //    after the API code downloads.
  var player;
  function onYouTubeIframeAPIReady() {
-   player = new YT.Player('divname', {
+   player = new YT.Player('utube', {
      height: '390',
      width: '640',
      //change videoid to change what video plays
-     videoId: '5XkKA3_Qtz4',
+     videoId: 'o9Ua9SwtZjg',
      playerVars: {
        'playsinline': 1
      },
@@ -85,12 +85,9 @@ async function searchMovies() {
  var done = false;
  function onPlayerStateChange(event) {
    if (event.data == YT.PlayerState.PLAYING && !done) {
-     setTimeout(stopVideo, 6000);
+     
      done = true;
    }
  }
- function stopVideo() {
-   player.stopVideo();
- }
-
+ 
 
