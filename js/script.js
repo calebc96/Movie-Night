@@ -53,17 +53,21 @@ async function searchMovies() {
 //youtubesearch = "https://www.youtube.com/results?search_query="+userinput+"+trailer"
 let key = "AIzaSyCY_952gGjBqylPvw16_rgi2pB2NI6aoPk";
 let youtubeURL = "https://www.googleapis.com/youtube/v3/videos?id=o9Ua9SwtZjg&key="+key+"&part=snippet,contentDetails,statistics,status";
-fetch(youtubeURL)
+let newyoutubeURL = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=surfing&key="+key;
+var youtubeid;
+fetch(newyoutubeURL)
 
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
       console.log("youtube",data);
-    
+      videoId = data.items[0].id.videoId
+      console.log("vid id",videoId);
+      onYouTubeIframeAPIReady(videoId);
     });
 
-
+console.log("outside",videoId)
 
 // 2. This code loads the IFrame Player API code asynchronously.
  var tag = document.createElement('script');
@@ -75,12 +79,12 @@ fetch(youtubeURL)
  // 3. This function creates an <iframe> (and YouTube player)
  //    after the API code downloads.
  var player;
- function onYouTubeIframeAPIReady() {
+ function onYouTubeIframeAPIReady(videoId) {
    player = new YT.Player('utube', {
      height: '390',
      width: '640',
      //change videoid to change what video plays
-     videoId: 'o9Ua9SwtZjg',
+     videoId: videoId,
      playerVars: {
        'playsinline': 1
      },
