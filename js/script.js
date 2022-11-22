@@ -65,7 +65,7 @@ function kaismegamoviefunction(userinput) {
   console.log("this function is running!");
   // kais key let key = "AIzaSyCY_952gGjBqylPvw16_rgi2pB2NI6aoPk";
   let key = "AIzaSyCNirqDt4O3qnoMFaSPZu1XhhRuMhZmjIQ";
-  let newyoutubeURL = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=" + userinput + "trailer&key=" + key;
+  let newyoutubeURL = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=" + userinput + "movietrailer&key=" + key;
 
   console.log("this is the new URL", newyoutubeURL);
 
