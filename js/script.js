@@ -52,22 +52,11 @@ async function searchMovies() {
 //kais youtube section
 //youtubesearch = "https://www.youtube.com/results?search_query="+userinput+"+trailer"
 let key = "AIzaSyCY_952gGjBqylPvw16_rgi2pB2NI6aoPk";
-let youtubeURL = "https://www.googleapis.com/youtube/v3/videos?id=o9Ua9SwtZjg&key="+key+"&part=snippet,contentDetails,statistics,status";
+//let youtubeURL = "https://www.googleapis.com/youtube/v3/videos?id=o9Ua9SwtZjg&key="+key+"&part=snippet,contentDetails,statistics,status";
 let newyoutubeURL = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=surfing&key="+key;
-var youtubeid;
-fetch(newyoutubeURL)
 
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      console.log("youtube",data);
-      videoId = data.items[0].id.videoId
-      console.log("vid id",videoId);
-      onYouTubeIframeAPIReady(videoId);
-    });
 
-console.log("outside",videoId)
+
 
 // 2. This code loads the IFrame Player API code asynchronously.
  var tag = document.createElement('script');
@@ -79,20 +68,31 @@ console.log("outside",videoId)
  // 3. This function creates an <iframe> (and YouTube player)
  //    after the API code downloads.
  var player;
- function onYouTubeIframeAPIReady(videoId) {
-   player = new YT.Player('utube', {
-     height: '390',
-     width: '640',
-     //change videoid to change what video plays
-     videoId: videoId,
-     playerVars: {
-       'playsinline': 1
-     },
-     events: {
-       'onReady': onPlayerReady,
-       'onStateChange': onPlayerStateChange
-     }
-   });
+ function onYouTubeIframeAPIReady() {
+
+  fetch(newyoutubeURL)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    console.log("youtube",data);
+    console.log("vid id", data.items[0].id.videoId); 
+    return data.items[0].id.videoId
+  }).then(function(videoId){
+      player = new YT.Player('utube', {
+        height: '390',
+        width: '640',
+        //change videoid to change what video plays
+        videoId: videoId,
+        playerVars: {
+          'playsinline': 1
+        },
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+  });
  }
  // 4. The API will call this function when the video player is ready.
  function onPlayerReady(event) {
