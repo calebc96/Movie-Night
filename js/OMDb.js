@@ -9,9 +9,6 @@ const movieGrid = document.getElementById('result-movie');
 const searchBox = document.getElementById('search-box');
 const yearSearchBox = document.getElementById('year-box')
 const pageResults = '&page=5'
-// youtube api request to retrieve trailer
-
-
 
 // Seach movie results from the APi
 
