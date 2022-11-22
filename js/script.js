@@ -62,9 +62,9 @@ async function searchMovies() {
 
 //kais youtube section
 function kaismegamoviefunction(userinput) {
-  
   console.log("this function is running!");
-  let key = "AIzaSyCY_952gGjBqylPvw16_rgi2pB2NI6aoPk";
+  // kais key let key = "AIzaSyCY_952gGjBqylPvw16_rgi2pB2NI6aoPk";
+  let key = "AIzaSyCNirqDt4O3qnoMFaSPZu1XhhRuMhZmjIQ";
   let newyoutubeURL = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=" + userinput + "trailer&key=" + key;
 
   console.log("this is the new URL", newyoutubeURL);
@@ -113,14 +113,17 @@ function kaismegamoviefunction(userinput) {
   }
   // 5. The API calls this function when the player's state changes.
   //    The function indicates that when playing a video (state=1),
-  //    the player should play for six seconds and then stop.
   var done = false;
   function onPlayerStateChange(event) {
     if (event.data == YT.PlayerState.PLAYING && !done) {
 
       done = true;
-    }
+      button.addEventListener("click", function () {
+        player.destroy();
+        
+    })
   }
 
 
+}
 }
