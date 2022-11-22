@@ -13,28 +13,29 @@
     
     <header class="bg-black text-white py-5 px-7 text-center">
       <input
-        class="bg-black w-3/12 py-3 px-3 rounded-l-full border-gray-700 border-2 text-white transition ease-in-out delay-350 bg-black hover:-translate-xy-2 hover:scale-105 duration-1000 hover:border-white"
+        class="bg-black lg:w-6/12 md:w-6/12 py-3 px-3 rounded-l-full border-gray-700 border-2 text-white transition ease-in-out delay-350 bg-black hover:-translate-xy-2 hover:scale-105 duration-1000 hover:border-white"
         type="text"
         placeholder="Search A Movie title..."
         id="search-box"
       />
       <button
         id="button"
-        class="bg-black w-1/12 py-3 rounded-r-full border-gray-700 border-2 font-semibold text-center align-center transition ease-in-out delay-350 bg-black hover:-translate-y-1 hover:scale-105 duration-1000 hover:border-white">
+        class="bg-black w-auto py-3 px-3 rounded-r-full border-gray-700 border-2 font-semibold text-center align-center transition ease-in-out delay-350 bg-black hover:-translate-y-1 hover:scale-105 duration-1000 hover:border-white">
         Search
       </button>
     </header>
-    <container class="grid grid-rows-2 grid-flow-col bg-white gap-2 p-2 bg-gray-900">
+
+    <container class="grid xl:grid-rows-2 xl:grid-flow-col md:grid-rows-1 bg-white gap-2 p-2 bg-gray-900">
 
       <article id="movie-poster"
-        class="row-span-3 col-span-1 bg-black grow min-w-full w-16 md:w-32 lg:w-48 grid items-center justify-center h-screen rounded-xl">
+        class="row-span-3 col-span-1 min-w-full bg-black grid items-center justify-center h-screen rounded-xl">
       </article>
 
-      <div id="utube" class="col-span-2 bg-black min-w-full w-16 lg:w-48 rounded-xl" ></div>
+      <div id="utube" class="col-span-2 min-w-full bg-black rounded-xl" ></div>
       
       <div
         id="result-movie"
-        class="row-span-2 col-span-2 flex p-2 text-white bg-black min-w-full w-16 md:w-32 xl:w-48 leading-8 rounded-xl"
+        class="row-span-2 col-span-2 w-16 md:w-32 xl:w-48 flex p-2 text-white bg-black min-w-full leading-8 rounded-xl"
       ></div>
     </container>
     
