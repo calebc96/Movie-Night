@@ -33,7 +33,6 @@ async function searchMovies(event) {
       movieGrid.innerHTML = `<div class="result-movie" id="result-movie"></div>`
     } 
 // NEW --------------------------------------------------------------------------------------------
-
     // inserting api information into empty div with an id of result-movie
     // need a placeholder image for if poster does not exist
     movieGrid.innerHTML = `
