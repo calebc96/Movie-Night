@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Search Website</title>
+    <!-- font awesome icons cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- custom css -->
+</head>
+<body>
+    <fieldset>
+        
+        <!-- new live search -->
+        <input type="text"  placeholder="Search Movie Titles..." onkeyup="searchMovieCollection()" id="search-box-collection">
+       
+    </fieldset>
+
+
+
+
+<div class="result-movie" id="result-movie"></div>
+
+<div class="result-franchise" id="result-franchise">
+
+
+
+</div>
+
+
+    <!-- movie app js -->
+    <script src = "./js/OMDb.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
+
+</body>
+</html>
