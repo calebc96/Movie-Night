@@ -1,41 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Movie Search</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link  rel="stylesheet" href="./css/style.css">
-  <title>Movie Search</title>
-</head>
+  <body>
+    <header class="bg-black text-white py-5 px-7 text-center">
+      <input
+        class="bg-black lg:w-6/12 md:w-6/12 py-3 px-3 rounded-l-full border-gray-700 border-2 text-white transition ease-in-out delay-350 bg-black hover:-translate-x-2 hover:scale-102 duration-1000 hover:border-white"
+        type="text"
+        placeholder="Search A Movie title..."
+        id="search-box"
+      />
+      <button
+        id="button"
+        class="bg-black w-auto py-3 px-3 rounded-r-full border-gray-700 border-2 font-semibold text-center align-center transition ease-in-out delay-350 bg-black hover:-translate--1 hover:scale-102 duration-1000 hover:border-white">
+        Search
+      </button>
+    </header>
 
-<body>
+    <container class="grid xl:grid-rows-2 xl:grid-flow-col md:grid-rows-1 bg-white gap-2 p-2 bg-gray-900">
 
-  <header class="bg-black text-white py-5 px-7"> 
-    <input class="bg-black w-3/12 py-3 px-3 rounded-lg border-gray-600 border-2 text-white" type="text" placeholder="Movie Title..." id="search-box">
-    <button id="button" class="bg-black w-1/12 py-3 rounded-lg border-gray-600 border-2 font-semibold text-center">Search</button>
-  </header>
-  <container class="grid grid-rows-2 grid-flow-col bg-white">
-    <article class="row-span-3 col-span-1 bg-black py-10 text-center min-w-full w-16 md:w-32 lg:w-48" >
+      <article id="movie-poster"
+        class="xl:row-span-3 xl:col-span-1 row-span-2 col-span-2 min-w-fit bg-black grid items-center justify-center h-screen rounded-xl">
+      </article>
+
+      <div id="utube" class="col-span-2 min-w-full bg-black rounded-xl object-contain" ></div>
       
-    </article>
+      <div
+        id="result-movie"
+        class="row-span-2 col-span-2 w-16 md:w-32 xl:w-48 flex p-2 text-gray-500 bg-black min-w-full leading-8 rounded-xl"
+      ></div>
+    </container>
+    
 
-    <div id="utube" class="col-span-2 bg-black min-w-full w-16 lg:w-48"></div>
-
-    <div id="result-movie" class="row-span-2 col-span-2 flex p-2 text-white bg-black min-w-full w-16 md:w-32 xl:w-48"></div>
-
-  </container>
-
-  <script src="./js/script.js"></script>
-=======
- 
-
-  <container id="result-movie"></container>
-  <input style="color: black; font-weight: bolder;" type="text" placeholder="Search.." id="search-box">
-  <br>
-  <button id="button">Search</button>
- <script src="./js/script.js"></script>
-
-</body>
+    <script src="./js/script.js"></script>
+  </body>
 </html>
