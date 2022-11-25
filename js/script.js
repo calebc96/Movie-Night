@@ -16,6 +16,9 @@ var button = document.getElementById('button')
 button.addEventListener("click", function (event) {
   event.preventDefault();
   searchMovies();
+  userinput = searchboxEL.value
+  console.log(userinput);
+  kaismegamoviefunction(userinput);
 });
 // Seach movie results from the APi
 async function searchMovies() {
@@ -36,38 +39,33 @@ async function searchMovies() {
 
   // inserting api information into empty div with an id of result-movie
   // need a placeholder image for if poster does not exist
-  userinput = data.Title
-  kaismegamoviefunction(userinput);
-  var moviePoster = document.getElementById('movie-poster')
-  moviePoster.innerHTML = `
-  <div class = "movie-poster">
-      <img src = "${(data.Poster != "N/A") ? data.Poster : "image_not_found.png"}" alt = "movie poster">
-  </div>
-  `
-  movieGrid.innerHTML = `
-  <div class = "movie-info">
-      <h3 class = "movie-title"><b>Movie</b>: ${data.Title}</h3>
-      <p class = "rated"><b>Ratings</b>: ${data.Rated}</p>
-      <p class = "released"><b>Released</b>: ${data.Released}</p>
-      <p class = "genre"><b>Genre:</b> ${data.Genre}</p>
-      <p class = "actors"><b>Actors: </b>${data.Actors}</p>
-      <p class = "plot"><b>Plot:</b> ${data.Plot}</p>
-      <p class = "awards"><b>Awards:<i class = "fas fa-award"></i></b> ${data.Awards}</p>
-  </div>
-  `;
 
+    var moviePoster = document.getElementById('movie-poster')
+    moviePoster.innerHTML = `
+    <div class = "movie-poster">
+        <img src = "${(data.Poster != "N/A") ? data.Poster : "image_not_found.png"}" alt = "movie poster">
+    </div>
+    `
+    movieGrid.innerHTML = `
+    <div class = "movie-info">
+        <h3 class = "movie-title"><b>Movie</b>: ${data.Title}</h3>
+        <p class = "rated"><b>Ratings</b>: ${data.Rated}</p>
+        <p class = "released"><b>Released</b>: ${data.Released}</p>
+        <p class = "genre"><b>Genre:</b> ${data.Genre}</p>
+        <p class = "actors"><b>Actors: </b>${data.Actors}</p>
+        <p class = "plot"><b>Plot:</b> ${data.Plot}</p>
+        <p class = "awards"><b>Awards:<i class = "fas fa-award"></i></b> ${data.Awards}</p>
+    </div>
+    `;
 
 }
 
 //kais youtube section
 function kaismegamoviefunction(userinput) {
   console.log("this function is running!");
-  if(userinput == undefined){
-    return;
-  }
- let key = "AIzaSyCY_952gGjBqylPvw16_rgi2pB2NI6aoPk";
-  //let key = "AIzaSyCNirqDt4O3qnoMFaSPZu1XhhRuMhZmjIQ";
-  let newyoutubeURL = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=" + userinput + "movietrailer&key=" + key;
+  // kais key let key = "AIzaSyCY_952gGjBqylPvw16_rgi2pB2NI6aoPk";
+  let key = "AIzaSyCNirqDt4O3qnoMFaSPZu1XhhRuMhZmjIQ";
+  let newyoutubeURL = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=" + userinput + "trailer&key=" + key;
 
   console.log("this is the new URL", newyoutubeURL);
 
@@ -112,7 +110,6 @@ function kaismegamoviefunction(userinput) {
   // 4. The API will call this function when the video player is ready.
   function onPlayerReady(event) {
     event.target.playVideo();
-    //player.pauseVideo();
   }
   // 5. The API calls this function when the player's state changes.
   //    The function indicates that when playing a video (state=1),
@@ -130,18 +127,3 @@ function kaismegamoviefunction(userinput) {
 
 }
 }
-// function history(userinput){
-//   var storedmovies = JSON.parse(localStorage.getItem('history')) || [];
-//   var searchedmovies = {
-//       movie: userinput,
-//   };
-//   storedmovies.push(searchedmovies);
-//   localStorage.setItem('history', JSON.stringify(storedmovies));
-//   let btn = document.createElement("button");
-// btn.innerHTML = userinput;
-// .appendChild(btn);
-// btn.onclick = function () {
-//   x = this.innerHTML;
-//   searchMovies(x);
-// };
-// }
