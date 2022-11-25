@@ -38,8 +38,9 @@ async function searchMovies() {
   // inserting api information into empty div with an id of result-movie
   // need a placeholder image for if poster does not exist
   
-  userinput = data.Title
-  kaismegamoviefunction(userinput);
+  userinput = data.Title;
+  released = data.Released;
+  kaismegamoviefunction(userinput,released);
     var moviePoster = document.getElementById('movie-poster')
     moviePoster.innerHTML = `
     <div class = "movie-poster">
@@ -61,15 +62,16 @@ async function searchMovies() {
 }
 
 //kais youtube section
-function kaismegamoviefunction(userinput) {
+function kaismegamoviefunction(userinput,released) {
   console.log("userinput:",userinput);
-  if(userinput == undefined){
+  console.log("releaseddate",released);
+  if(userinput == undefined || released == "N/A"){
     return;
   }
   console.log("this function is running!");
   // kais key let key = "AIzaSyCY_952gGjBqylPvw16_rgi2pB2NI6aoPk";
   let key = "AIzaSyCNirqDt4O3qnoMFaSPZu1XhhRuMhZmjIQ";
-  let newyoutubeURL = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=" + userinput + "trailer&key=" + key;
+  let newyoutubeURL = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=" + userinput+released + "trailer&key=" + key;
 
   console.log("this is the new URL", newyoutubeURL);
 
