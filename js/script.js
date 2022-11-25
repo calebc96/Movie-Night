@@ -66,8 +66,8 @@ function kaismegamoviefunction(userinput) {
   if(userinput == undefined){
     return;
   }
-  // kais key let key = "AIzaSyCY_952gGjBqylPvw16_rgi2pB2NI6aoPk";
-  let key = "AIzaSyCNirqDt4O3qnoMFaSPZu1XhhRuMhZmjIQ";
+ let key = "AIzaSyCY_952gGjBqylPvw16_rgi2pB2NI6aoPk";
+  //let key = "AIzaSyCNirqDt4O3qnoMFaSPZu1XhhRuMhZmjIQ";
   let newyoutubeURL = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=" + userinput + "movietrailer&key=" + key;
 
   console.log("this is the new URL", newyoutubeURL);
@@ -131,3 +131,18 @@ function kaismegamoviefunction(userinput) {
 
 }
 }
+// function history(userinput){
+//   var storedmovies = JSON.parse(localStorage.getItem('history')) || [];
+//   var searchedmovies = {
+//       movie: userinput,
+//   };
+//   storedmovies.push(searchedmovies);
+//   localStorage.setItem('history', JSON.stringify(storedmovies));
+//   let btn = document.createElement("button");
+// btn.innerHTML = userinput;
+// .appendChild(btn);
+// btn.onclick = function () {
+//   x = this.innerHTML;
+//   searchMovies(x);
+// };
+// }
