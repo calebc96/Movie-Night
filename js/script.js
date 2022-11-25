@@ -38,24 +38,23 @@ async function searchMovies() {
   // need a placeholder image for if poster does not exist
   userinput = data.Title
   kaismegamoviefunction(userinput);
+  var moviePoster = document.getElementById('movie-poster')
+  moviePoster.innerHTML = `
+  <div class = "movie-poster">
+      <img src = "${(data.Poster != "N/A") ? data.Poster : "image_not_found.png"}" alt = "movie poster">
+  </div>
+  `
   movieGrid.innerHTML = `
-    <div class = "movie-poster">
-        <img src = "${(data.Poster != "N/A") ? data.Poster : "image_not_found.png"}" alt = "movie poster">
-    </div>
-    <div class = "movie-info">
-        <h3 class = "movie-title">${data.Title}</h3>
-        
-        <p class = "year"><b>Year</b>: ${data.Year}</p>
-        <p class = "rated"><b>Ratings</b>: ${data.Rated}</p>
-        <p class = "released"><b>Released</b>: ${data.Released}</p>
-        <p class = "genre"><b>Genre:</b> ${data.Genre}</p>
-        <p class = "writer"><b>Writer:</b> ${data.Writer}</p>
-        <p class = "actors"><b>Actors: </b>${data.Actors}</p>
-        <p class = "plot"><b>Plot:</b> ${data.Plot}</p>
-        <p class = "language"><b>Language:</b> ${data.Language}</p>
-        <p class = "awards"><b><i class = "fas fa-award"></i></b> ${data.Awards}</p>
-    </div>
-    `;
+  <div class = "movie-info">
+      <h3 class = "movie-title"><b>Movie</b>: ${data.Title}</h3>
+      <p class = "rated"><b>Ratings</b>: ${data.Rated}</p>
+      <p class = "released"><b>Released</b>: ${data.Released}</p>
+      <p class = "genre"><b>Genre:</b> ${data.Genre}</p>
+      <p class = "actors"><b>Actors: </b>${data.Actors}</p>
+      <p class = "plot"><b>Plot:</b> ${data.Plot}</p>
+      <p class = "awards"><b>Awards:<i class = "fas fa-award"></i></b> ${data.Awards}</p>
+  </div>
+  `;
 
 
 }
