@@ -93,7 +93,7 @@ function kaismegamoviefunction(userinput) {
         return data.items[0].id.videoId
       }).then(function (videoId) {
         player = new YT.Player('utube', {
-          height: '400',
+          height: '450',
           width: 'auto',
           //change videoid to change what video plays
           videoId: videoId,
