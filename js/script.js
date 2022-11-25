@@ -16,9 +16,7 @@ var button = document.getElementById('button')
 button.addEventListener("click", function (event) {
   event.preventDefault();
   searchMovies();
-  userinput = searchboxEL.value
-  console.log(userinput);
-  kaismegamoviefunction(userinput);
+ 
 });
 // Seach movie results from the APi
 async function searchMovies() {
@@ -39,7 +37,9 @@ async function searchMovies() {
 
   // inserting api information into empty div with an id of result-movie
   // need a placeholder image for if poster does not exist
-
+  
+  userinput = data.Title
+  kaismegamoviefunction(userinput);
     var moviePoster = document.getElementById('movie-poster')
     moviePoster.innerHTML = `
     <div class = "movie-poster">
@@ -62,6 +62,10 @@ async function searchMovies() {
 
 //kais youtube section
 function kaismegamoviefunction(userinput) {
+  console.log("userinput:",userinput);
+  if(userinput == undefined){
+    return;
+  }
   console.log("this function is running!");
   // kais key let key = "AIzaSyCY_952gGjBqylPvw16_rgi2pB2NI6aoPk";
   let key = "AIzaSyCNirqDt4O3qnoMFaSPZu1XhhRuMhZmjIQ";
