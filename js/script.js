@@ -2,6 +2,7 @@
 let requestUrl = 'http://www.omdbapi.com/?apikey=544f655e&t='
 var searchboxEL = document.getElementById("search-box");
 var userinput;
+var historyEL = document.getElementById("historylist");
 // OMDb API Key
 const APIKey = '544f655e'
 
@@ -16,6 +17,7 @@ var button = document.getElementById('button')
 button.addEventListener("click", function (event) {
   event.preventDefault();
   searchMovies();
+  
  
 });
 // Seach movie results from the APi
@@ -41,6 +43,7 @@ async function searchMovies() {
   userinput = data.Title;
   released = data.Released;
   kaismegamoviefunction(userinput,released);
+  searchhistory(userinput);
     var moviePoster = document.getElementById('movie-poster')
     moviePoster.innerHTML = `
     <div class = "movie-poster">
@@ -71,7 +74,7 @@ function kaismegamoviefunction(userinput,released) {
   console.log("this function is running!");
   // kais key let key = "AIzaSyCY_952gGjBqylPvw16_rgi2pB2NI6aoPk";
   let key = "AIzaSyCNirqDt4O3qnoMFaSPZu1XhhRuMhZmjIQ";
-  let newyoutubeURL = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=" + userinput+released + "trailer&key=" + key;
+  let newyoutubeURL = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=" + userinput+released + "movietrailer&key=" + key;
 
   console.log("this is the new URL", newyoutubeURL);
 
@@ -133,3 +136,30 @@ function kaismegamoviefunction(userinput,released) {
 
 }
 }
+
+
+function searchhistory(userinput){
+  var storedinputs = JSON.parse(localStorage.getItem('history')) || [];
+  var searchhistory = {
+      userentered: userinput,
+  };
+  storedinputs.push(searchhistory);
+  localStorage.setItem('history', JSON.stringify(storedinputs));
+  let historyLI = document.createElement("li");
+historyLI.innerHTML = userinput;
+historyEL.appendChild(historyLI);
+
+}
+init();
+function init(){
+      retrieveddata = localStorage.getItem("history");
+      var storagearray = JSON.parse(retrieveddata);
+      if(storagearray !== null){
+      for(var i=0; i<storagearray.length; i++){
+        var temp =storagearray[i]
+        let searchhistory  = document.createElement("li");
+searchhistory.innerHTML = temp.userentered;
+historyEL.appendChild(searchhistory);
+      }}
+    
+    }
