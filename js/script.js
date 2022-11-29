@@ -1,5 +1,5 @@
 // url to send request
-let requestUrl = 'http://www.omdbapi.com/?apikey=544f655e&t='
+let requestUrl = 'https://www.omdbapi.com/?apikey=544f655e&t='
 var searchboxEL = document.getElementById("search-box");
 var userinput;
 var historyEL = document.getElementById("historylist");
