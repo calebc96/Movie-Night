@@ -42,7 +42,9 @@ async function searchMovies() {
   
   userinput = data.Title;
   released = data.Released;
-  kaismegamoviefunction(userinput,released);
+ 
+  actors = data.Actors;
+  kaismegamoviefunction(userinput,released,actors);
   searchhistory(userinput);
     var moviePoster = document.getElementById('movie-poster')
     moviePoster.innerHTML = `
@@ -65,7 +67,10 @@ async function searchMovies() {
 }
 
 //kais youtube section
-function kaismegamoviefunction(userinput,released) {
+function kaismegamoviefunction(userinput,released,actors) {
+    //slice to only get the released year
+    
+    released = released.slice(6,11);
   console.log("userinput:",userinput);
   console.log("releaseddate",released);
   if(userinput == undefined || released == "N/A"){
@@ -110,12 +115,18 @@ function kaismegamoviefunction(userinput,released) {
             'playsinline': 1
           },
           events: {
-            'onReady': onPlayerReady,
+            //un comment below for auto play
+            //'onReady': onPlayerReady,  
             'onStateChange': onPlayerStateChange
           }
         });
       });
   }
+  //destroys player when new search is made via click
+  button.addEventListener("click", function () {
+    player.destroy();
+    
+})
   // 4. The API will call this function when the video player is ready.
   function onPlayerReady(event) {
     event.target.playVideo();
@@ -127,10 +138,7 @@ function kaismegamoviefunction(userinput,released) {
     if (event.data == YT.PlayerState.PLAYING && !done) {
 
       done = true;
-      button.addEventListener("click", function () {
-        player.destroy();
-        
-    })
+    
   }
 
 
