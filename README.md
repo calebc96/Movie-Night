@@ -14,4 +14,4 @@ SO THAT I can decide what movie to watch
 ## Mock-up
 ![image](https://user-images.githubusercontent.com/111102789/204410206-922d9742-c171-4f8a-8051-f3385fa5e023.png)
 ## Live Application URL
- https://calebcarnett.github.io/Project-1/
+ https://calebcarnett.github.io/Movie-Search-Application
