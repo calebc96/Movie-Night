@@ -11,19 +11,21 @@ const APIKey = '544f655e'
 const movieGrid = document.getElementById('result-movie');
 const moviePoster = document.getElementById('movie-poster')
 // Search box variable grabs input field from html with id of search-box
-const searchBox = document.getElementById('search-box')
+// let searchBox = document.getElementById('search-box').value
 
 var button = document.getElementById('button')
 
 button.addEventListener("click", function (event) {
   event.preventDefault();
-  searchMovies();
+  let searchBox = document.getElementById('search-box').value
+  searchMovies(searchBox);
   
  
 });
 // Seach movie results from the APi
-async function searchMovies() {
-  const movie = searchBox.value;
+async function searchMovies(searchBox) {
+  console.log(searchBox,"line 26 searchbox")
+  const movie = searchBox;
   // creates the url based on what is typed into the search box
   const movieSearchUrl = new URL(`${requestUrl}${movie}`);
 
@@ -133,6 +135,9 @@ function kaismegamoviefunction(userinput,released,actors) {
       });
   }
   //destroys player when new search is made via click
+  document.getElementById("historylist").addEventListener("click",function(){
+    player.destroy();
+  })
   button.addEventListener("click", function () {
     player.destroy();
     
@@ -168,6 +173,12 @@ function searchhistory(userinput){
   
 historyLI.innerHTML = "- " + userinput;
 historyEL.appendChild(historyLI);
+historyLI.addEventListener('click', function handleClick(event){
+  console.log(this.innerHTML,"element clicked")
+  console.info(this.innerHTML.substring(2));  
+  let searchBox = this.innerHTML.substring(2)
+  searchMovies(searchBox)
+  })
 document.getElementById("deletehistory").classList.remove('hidden')
 }
 function deletehistory(){
@@ -187,6 +198,12 @@ function init(){
         var temp =storagearray[i]
         let searchhistory  = document.createElement("li");
 searchhistory.innerHTML = "- " + temp.userentered;
+searchhistory.addEventListener('click', function handleClick(event){
+console.log(this.innerHTML,"element clicked")
+console.info(this.innerHTML.substring(2));  
+let searchBox = this.innerHTML.substring(2)
+searchMovies(searchBox)
+})
 historyEL.appendChild(searchhistory);
 document.getElementById("deletehistory").classList.remove('hidden')
 
