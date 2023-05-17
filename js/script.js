@@ -162,7 +162,8 @@ document.getElementById("deletehistory").classList.remove('hidden')
 }
 function deletehistory(){
   localStorage.removeItem('history');
-  window.location.reload();
+  historyEL.innerHTML= "";
+  document.getElementById("deletehistory").classList.add("hidden")
 }
 document.getElementById("deletehistory").addEventListener("click", deletehistory)
 
@@ -170,16 +171,14 @@ init();
 function init(){
       retrieveddata = localStorage.getItem("history");
       var storagearray = JSON.parse(retrieveddata);
-      if(storagearray.length >= 1){
-        document.getElementById("deletehistory").classList.remove('hidden')
-       
-      }
+    
       if(storagearray !== null){
       for(var i=0; i<storagearray.length; i++){
         var temp =storagearray[i]
         let searchhistory  = document.createElement("li");
 searchhistory.innerHTML = "- " + temp.userentered;
 historyEL.appendChild(searchhistory);
+document.getElementById("deletehistory").classList.remove('hidden')
 
       }}
     
