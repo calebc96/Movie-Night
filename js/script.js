@@ -160,10 +160,20 @@ function kaismegamoviefunction(userinput,released,actors) {
 }
 }
 
-
+//handles search history
 function searchhistory(userinput){
+    
      
   var storedinputs = JSON.parse(localStorage.getItem('history')) || [];
+  
+ //checks if searched title is in local storage if theres a match exits to avoid duplicate movie historys
+  for(var i = 0; i < storedinputs.length; i++){
+    
+    if(storedinputs[i].userentered == userinput){
+      console.log("match")
+      return;
+    }
+  }
   var searchhistory = {
       userentered: userinput,
   };
