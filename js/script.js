@@ -147,6 +147,7 @@ function kaismegamoviefunction(userinput,released,actors) {
 
 
 function searchhistory(userinput){
+     
   var storedinputs = JSON.parse(localStorage.getItem('history')) || [];
   var searchhistory = {
       userentered: userinput,
@@ -154,9 +155,10 @@ function searchhistory(userinput){
   storedinputs.push(searchhistory);
   localStorage.setItem('history', JSON.stringify(storedinputs));
   let historyLI = document.createElement("li");
+  
 historyLI.innerHTML = "- " + userinput;
 historyEL.appendChild(historyLI);
-
+document.getElementById("deletehistory").classList.remove('hidden')
 }
 function deletehistory(){
   localStorage.removeItem('history');
@@ -168,12 +170,17 @@ init();
 function init(){
       retrieveddata = localStorage.getItem("history");
       var storagearray = JSON.parse(retrieveddata);
+      if(storagearray.length >= 1){
+        document.getElementById("deletehistory").classList.remove('hidden')
+       
+      }
       if(storagearray !== null){
       for(var i=0; i<storagearray.length; i++){
         var temp =storagearray[i]
         let searchhistory  = document.createElement("li");
 searchhistory.innerHTML = "- " + temp.userentered;
 historyEL.appendChild(searchhistory);
+
       }}
     
     }
