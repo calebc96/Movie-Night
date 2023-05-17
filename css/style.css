@@ -5,3 +5,21 @@ h2{
 #historylist{
     padding-bottom: 1%;
 }
+li{
+    width: fit-content;
+    padding: 5px;
+}
+li:hover {
+    cursor: pointer;
+   color: rgb(221, 218, 218);
+   border-radius: 20% 20% 20% 20%;
+   border: 1px solid #d0d0d0;
+    
+}
+ul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+}
