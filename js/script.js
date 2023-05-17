@@ -3,12 +3,13 @@ let requestUrl = 'https://www.omdbapi.com/?apikey=544f655e&t='
 var searchboxEL = document.getElementById("search-box");
 var userinput;
 var historyEL = document.getElementById("historylist");
+const youtubediv = document.getElementById("utube");
 // OMDb API Key
 const APIKey = '544f655e'
 
 // variable to insert js api results into HTML
 const movieGrid = document.getElementById('result-movie');
-
+const moviePoster = document.getElementById('movie-poster')
 // Search box variable grabs input field from html with id of search-box
 const searchBox = document.getElementById('search-box')
 
@@ -44,9 +45,15 @@ async function searchMovies() {
   released = data.Released;
  
   actors = data.Actors;
+ 
   kaismegamoviefunction(userinput,released,actors);
+  if(!userinput || !data){
+    movieGrid.innerHTML= "No Info Found"
+    moviePoster.innerHTML = "No Poster Found"
+    return;
+  }
   searchhistory(userinput);
-    var moviePoster = document.getElementById('movie-poster')
+    
     moviePoster.innerHTML = `
     <div class = "movie-poster">
         <img src = "${(data.Poster != "N/A") ? data.Poster : "image_not_found.png"}" alt = "movie poster">
@@ -70,12 +77,15 @@ async function searchMovies() {
 function kaismegamoviefunction(userinput,released,actors) {
     //slice to only get the released year
     
-    released = released.slice(6,11);
+    
   console.log("userinput:",userinput);
-  console.log("releaseddate",released);
+  
   if(userinput == undefined || released == "N/A"){
+    youtubediv.innerHTML = "No Movie Trailer Found"
     return;
   }
+  released = released.slice(6,11);
+  console.log("releaseddate",released);
   console.log("this function is running!");
   // kais key let key = "AIzaSyCY_952gGjBqylPvw16_rgi2pB2NI6aoPk";
   let key = "AIzaSyCNirqDt4O3qnoMFaSPZu1XhhRuMhZmjIQ";
