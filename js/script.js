@@ -154,10 +154,16 @@ function searchhistory(userinput){
   storedinputs.push(searchhistory);
   localStorage.setItem('history', JSON.stringify(storedinputs));
   let historyLI = document.createElement("li");
-historyLI.innerHTML = userinput;
+historyLI.innerHTML = "- " + userinput;
 historyEL.appendChild(historyLI);
 
 }
+function deletehistory(){
+  localStorage.removeItem('history');
+  window.location.reload();
+}
+document.getElementById("deletehistory").addEventListener("click", deletehistory)
+
 init();
 function init(){
       retrieveddata = localStorage.getItem("history");
@@ -166,7 +172,7 @@ function init(){
       for(var i=0; i<storagearray.length; i++){
         var temp =storagearray[i]
         let searchhistory  = document.createElement("li");
-searchhistory.innerHTML = temp.userentered;
+searchhistory.innerHTML = "- " + temp.userentered;
 historyEL.appendChild(searchhistory);
       }}
     

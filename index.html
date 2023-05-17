@@ -22,7 +22,16 @@
         class="bg-black w-auto py-3 px-3 rounded-r-full border-gray-700 border-2 font-semibold text-center align-center transition ease-in-out delay-350 bg-black hover:-translate--1 hover:scale-102 duration-1000 hover:border-white">
         Search
       </button>
+      
+      <h2>Search history:</h2>
+    <ul id="historylist" class="bg-black text-white"></ul>
+    <button 
+    id="deletehistory"
+    class = "bg-black w-auto py-1 px-1 rounded-full border-gray-700 border-2 font-semibold text-center align-center transition ease-in-out delay-350 bg-black hover:-translate--1 hover:scale-102 duration-1000 hover:border-white">
+      Delete History
+    </button>
     </header>
+    
 
     <container class="grid xl:grid-rows-2 xl:grid-flow-col md:grid-rows-1 bg-white gap-2 p-2 bg-gray-900">
 
@@ -38,8 +47,10 @@
         class="row-span-2 col-span-2 w-16 md:w-32 xl:w-48 flex p-2 text-gray-500 bg-black min-w-full leading-8 rounded-xl"
       ></div>
     </container>
-    <ul id="historylist" class="bg-black text-white"></ul>
-
+    <div>
+      
+    
+  </div>
     <script src="./js/script.js"></script>
   </body>
 </html>
