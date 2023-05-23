@@ -3,26 +3,29 @@ let requestUrl = 'https://www.omdbapi.com/?apikey=544f655e&t='
 var searchboxEL = document.getElementById("search-box");
 var userinput;
 var historyEL = document.getElementById("historylist");
+const youtubediv = document.getElementById("utube");
 // OMDb API Key
 const APIKey = '544f655e'
 
 // variable to insert js api results into HTML
 const movieGrid = document.getElementById('result-movie');
-
+const moviePoster = document.getElementById('movie-poster')
 // Search box variable grabs input field from html with id of search-box
-const searchBox = document.getElementById('search-box')
+// let searchBox = document.getElementById('search-box').value
 
 var button = document.getElementById('button')
 
 button.addEventListener("click", function (event) {
   event.preventDefault();
-  searchMovies();
+  let searchBox = document.getElementById('search-box').value
+  searchMovies(searchBox);
   
  
 });
 // Seach movie results from the APi
-async function searchMovies() {
-  const movie = searchBox.value;
+async function searchMovies(searchBox) {
+  console.log(searchBox,"line 26 searchbox")
+  const movie = searchBox;
   // creates the url based on what is typed into the search box
   const movieSearchUrl = new URL(`${requestUrl}${movie}`);
 
@@ -44,9 +47,15 @@ async function searchMovies() {
   released = data.Released;
  
   actors = data.Actors;
+ 
   kaismegamoviefunction(userinput,released,actors);
+  if(!userinput || !data){
+    movieGrid.innerHTML= "No Info Found"
+    moviePoster.innerHTML = "No Poster Found"
+    return;
+  }
   searchhistory(userinput);
-    var moviePoster = document.getElementById('movie-poster')
+    
     moviePoster.innerHTML = `
     <div class = "movie-poster">
         <img src = "${(data.Poster != "N/A") ? data.Poster : "image_not_found.png"}" alt = "movie poster">
@@ -70,12 +79,15 @@ async function searchMovies() {
 function kaismegamoviefunction(userinput,released,actors) {
     //slice to only get the released year
     
-    released = released.slice(6,11);
+    
   console.log("userinput:",userinput);
-  console.log("releaseddate",released);
+  
   if(userinput == undefined || released == "N/A"){
+    youtubediv.innerHTML = "No Movie Trailer Found"
     return;
   }
+  released = released.slice(6,11);
+  console.log("releaseddate",released);
   console.log("this function is running!");
   // kais key let key = "AIzaSyCY_952gGjBqylPvw16_rgi2pB2NI6aoPk";
   let key = "AIzaSyCNirqDt4O3qnoMFaSPZu1XhhRuMhZmjIQ";
@@ -123,6 +135,9 @@ function kaismegamoviefunction(userinput,released,actors) {
       });
   }
   //destroys player when new search is made via click
+  document.getElementById("historylist").addEventListener("click",function(){
+    player.destroy();
+  })
   button.addEventListener("click", function () {
     player.destroy();
     
@@ -145,29 +160,63 @@ function kaismegamoviefunction(userinput,released,actors) {
 }
 }
 
-
+//handles search history
 function searchhistory(userinput){
+    
+     
   var storedinputs = JSON.parse(localStorage.getItem('history')) || [];
+  
+ //checks if searched title is in local storage if theres a match exits to avoid duplicate movie historys
+  for(var i = 0; i < storedinputs.length; i++){
+    
+    if(storedinputs[i].userentered == userinput){
+      console.log("match")
+      return;
+    }
+  }
   var searchhistory = {
       userentered: userinput,
   };
   storedinputs.push(searchhistory);
   localStorage.setItem('history', JSON.stringify(storedinputs));
   let historyLI = document.createElement("li");
-historyLI.innerHTML = userinput;
+  
+historyLI.innerHTML = "- " + userinput;
 historyEL.appendChild(historyLI);
-
+historyLI.addEventListener('click', function handleClick(event){
+  console.log(this.innerHTML,"element clicked")
+  console.info(this.innerHTML.substring(2));  
+  let searchBox = this.innerHTML.substring(2)
+  searchMovies(searchBox)
+  })
+document.getElementById("deletehistory").classList.remove('hidden')
 }
+function deletehistory(){
+  localStorage.removeItem('history');
+  historyEL.innerHTML= "";
+  document.getElementById("deletehistory").classList.add("hidden")
+}
+document.getElementById("deletehistory").addEventListener("click", deletehistory)
+
 init();
 function init(){
       retrieveddata = localStorage.getItem("history");
       var storagearray = JSON.parse(retrieveddata);
+    
       if(storagearray !== null){
       for(var i=0; i<storagearray.length; i++){
         var temp =storagearray[i]
         let searchhistory  = document.createElement("li");
-searchhistory.innerHTML = temp.userentered;
+searchhistory.innerHTML = "- " + temp.userentered;
+searchhistory.addEventListener('click', function handleClick(event){
+console.log(this.innerHTML,"element clicked")
+console.info(this.innerHTML.substring(2));  
+let searchBox = this.innerHTML.substring(2)
+searchMovies(searchBox)
+})
 historyEL.appendChild(searchhistory);
+document.getElementById("deletehistory").classList.remove('hidden')
+
       }}
     
     }
